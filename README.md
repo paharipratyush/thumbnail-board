@@ -1,7 +1,6 @@
 # Thumbnail Board
 
 ![Thumbnail Board Screenshot](https://github.com/paharipratyush/thumbnail-board/blob/main/thumbnail-board-overview.png?raw=true)
-*Replace this placeholder image with an actual screenshot of your application!*
 
 ## 💡 Project Idea & Problem Solved
 
