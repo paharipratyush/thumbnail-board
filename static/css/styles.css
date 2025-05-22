@@ -1,0 +1,771 @@
+/* General Body and Reset Styles */
+body {
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #181818;
+	/* YouTube Dark Theme Background */
+	color: #f1f1f1;
+	/* Light text color */
+	display: flex;
+	min-height: 100vh;
+	/* Ensure body takes full viewport height */
+	overflow-x: hidden;
+	/* Prevent horizontal scroll */
+}
+
+/* Application Container */
+.app-container {
+	display: flex;
+	width: 100%;
+}
+
+/* Sidebar Styling */
+.sidebar {
+	width: 280px;
+	/* Fixed width for sidebar */
+	background-color: #202020;
+	/* Slightly lighter dark for sidebar */
+	color: #f1f1f1;
+	/* Light text color */
+	padding: 20px;
+	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+	/* Stronger shadow */
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	/* Include padding in width */
+	position: sticky;
+	/* Sticky sidebar */
+	top: 0;
+	height: 100vh;
+	/* Full height */
+	overflow-y: auto;
+	/* Scroll if content overflows */
+}
+
+.sidebar-header {
+	margin-bottom: 30px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #3a3a3a;
+	/* Subtle dark border */
+	text-align: center;
+}
+
+.sidebar-header h2 {
+	margin: 0;
+	font-size: 1.8em;
+	font-weight: 500;
+	color: #f1f1f1;
+	/* Ensure header text is light */
+}
+
+.sidebar-content {
+	flex-grow: 1;
+	/* Allows content to take available space */
+}
+
+.board-list {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 20px 0;
+}
+
+.board-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 15px;
+	margin-bottom: 8px;
+	background-color: #2c2c2c;
+	/* Darker background for items */
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.board-item:hover {
+	background-color: #383838;
+	/* Lighter dark hover for items */
+	transform: translateY(-2px);
+}
+
+.board-item.active {
+	background-color: #ff0000;
+	/* YouTube Red for active item */
+	font-weight: 500;
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+	/* Stronger shadow for active */
+	color: white;
+	/* Ensure active item text is white */
+}
+
+.board-item-name {
+	flex-grow: 1;
+	font-size: 1.1em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.edit-board-btn {
+	background: none;
+	border: none;
+	color: #aaa;
+	/* Gray for icons */
+	font-size: 0.9em;
+	cursor: pointer;
+	margin-left: 10px;
+	opacity: 0.8;
+	transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.edit-board-btn:hover {
+	opacity: 1;
+	color: #f1f1f1;
+}
+
+.add-board-btn {
+	width: 100%;
+	padding: 12px 15px;
+	background-color: #ff0000;
+	/* YouTube Red for add button */
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 1.1em;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.add-board-btn:hover {
+	background-color: #cc0000;
+	/* Darker red on hover */
+	transform: translateY(-2px);
+}
+
+/* Main Content Area */
+.main-content {
+	flex-grow: 1;
+	padding: 30px;
+	margin-left: 0;
+	/* Initial state, adjusted by JS if sidebar hidden */
+	transition: margin-left 0.3s ease;
+	box-sizing: border-box;
+	background-color: #202020;
+	/* Same as sidebar background for seamless look */
+	color: #f1f1f1;
+	/* Light text for main content */
+	display: flex;
+	flex-direction: column;
+}
+
+.board-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 25px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #3a3a3a;
+	/* Darker border */
+}
+
+.board-header h1 {
+	margin: 0;
+	font-size: 2.2em;
+	font-weight: 700;
+	color: #f1f1f1;
+	/* Light text for header */
+}
+
+.share-board-btn {
+	background-color: #3a3a3a;
+	/* Dark gray for subtle button */
+	color: #f1f1f1;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 1em;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	transition: background-color 0.2s ease;
+}
+
+.share-board-btn:hover {
+	background-color: #444444;
+	/* Lighter dark gray on hover */
+}
+
+/* Thumbnail Form */
+.thumbnail-form {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 30px;
+}
+
+.thumbnail-input {
+	flex-grow: 1;
+	padding: 12px 15px;
+	border: 1px solid #3a3a3a;
+	/* Darker border */
+	border-radius: 5px;
+	font-size: 1em;
+	outline: none;
+	background-color: #2c2c2c;
+	/* Dark background for input */
+	color: #f1f1f1;
+	/* Light text for input */
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.thumbnail-input:focus {
+	border-color: #ff0000;
+	/* YouTube Red on focus */
+	box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.add-btn {
+	background-color: #ff0000;
+	/* YouTube Red for add button */
+	color: white;
+	padding: 12px 25px;
+	border: none;
+	border-radius: 5px;
+	font-size: 1em;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.add-btn:hover {
+	background-color: #cc0000;
+	/* Darker red on hover */
+}
+
+/* Thumbnail Grid */
+.thumbnail-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	/* Responsive grid */
+	gap: 25px;
+	flex-grow: 1;
+	align-content: start;
+	/* Align items to the start of the grid */
+}
+
+.empty-state {
+	grid-column: 1 / -1;
+	/* Span across all columns */
+	text-align: center;
+	padding: 50px 20px;
+	color: #aaaaaa;
+	/* Lighter text for empty state */
+	font-size: 1.2em;
+	background-color: #2c2c2c;
+	/* Dark background for empty state */
+	border-radius: 10px;
+	margin-top: 30px;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.empty-state p {
+	margin: 10px 0;
+}
+
+.empty-state .small-text {
+	font-size: 0.9em;
+	color: #777777;
+}
+
+.thumbnail-item {
+	background-color: #2c2c2c;
+	/* Dark background for thumbnail item */
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	/* Stronger shadow */
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.thumbnail-item:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.thumbnail-img-container {
+	position: relative;
+	width: 100%;
+	padding-bottom: 56.25%;
+	/* 16:9 aspect ratio */
+	overflow: hidden;
+}
+
+.thumbnail-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.thumbnail-info {
+	padding: 15px;
+	font-size: 0.95em;
+	color: #f1f1f1;
+	/* Light text */
+	background-color: #383838;
+	/* Slightly lighter dark for info area */
+	border-top: 1px solid #444444;
+	/* Darker border */
+	min-height: 40px;
+	/* Ensure consistent height for info */
+	display: flex;
+	align-items: center;
+}
+
+.delete-thumbnail-btn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background-color: rgba(255, 0, 0, 0.8);
+	/* Red for delete with opacity */
+	color: white;
+	border: none;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.9em;
+	cursor: pointer;
+	opacity: 0;
+	/* Hidden by default */
+	transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.thumbnail-item:hover .delete-thumbnail-btn {
+	opacity: 1;
+	/* Show on hover */
+}
+
+.delete-thumbnail-btn:hover {
+	background-color: #cc0000;
+	/* Darker red on hover */
+}
+
+/* Modals */
+.modal {
+	display: none;
+	/* Hidden by default */
+	position: fixed;
+	/* Stay in place */
+	z-index: 100;
+	/* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgba(0, 0, 0, 0.8);
+	/* Darker overlay */
+	justify-content: center;
+	align-items: center;
+}
+
+.modal.active {
+	display: flex;
+	/* Show when active */
+}
+
+.modal-content {
+	background-color: #2c2c2c;
+	/* Darker background for modal content */
+	color: #f1f1f1;
+	/* Light text for modal */
+	margin: auto;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+	/* Stronger shadow */
+	width: 90%;
+	max-width: 500px;
+	/* Max width for modal */
+	box-sizing: border-box;
+	animation: fadeIn 0.3s ease-out;
+}
+
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #3a3a3a;
+	/* Darker border */
+	padding-bottom: 15px;
+	margin-bottom: 20px;
+}
+
+.modal-header h2 {
+	margin: 0;
+	font-size: 1.8em;
+	color: #f1f1f1;
+	/* Light text for header */
+}
+
+.close-modal {
+	color: #aaaaaa;
+	font-size: 28px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: color 0.2s ease;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+	color: #f1f1f1;
+}
+
+.modal-body {
+	margin-bottom: 20px;
+}
+
+.modal-body label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 500;
+	color: #aaaaaa;
+}
+
+.modal-body input[type="text"] {
+	width: 100%;
+	padding: 12px 15px;
+	border: 1px solid #3a3a3a;
+	/* Darker border */
+	border-radius: 5px;
+	font-size: 1em;
+	outline: none;
+	background-color: #202020;
+	/* Dark background for input */
+	color: #f1f1f1;
+	/* Light text for input */
+	box-sizing: border-box;
+	transition: border-color 0.2s ease;
+}
+
+.modal-body input[type="text"]:focus {
+	border-color: #ff0000;
+	/* YouTube Red on focus */
+}
+
+.modal-footer {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	border-top: 1px solid #3a3a3a;
+	/* Darker border */
+	padding-top: 20px;
+}
+
+.create-board-btn,
+.update-board-btn {
+	background-color: #ff0000;
+	/* YouTube Red */
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 1em;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.create-board-btn:hover,
+.update-board-btn:hover {
+	background-color: #cc0000;
+	/* Darker red */
+}
+
+.delete-board-btn {
+	background-color: #606060;
+	/* Dark gray for delete, less harsh than red */
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 1em;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.delete-board-btn:hover {
+	background-color: #444444;
+	/* Darker gray on hover */
+}
+
+.share-link-container {
+	display: flex;
+	gap: 10px;
+}
+
+.share-link-container input {
+	flex-grow: 1;
+	background-color: #2c2c2c;
+	/* Dark background for share link input */
+	color: #f1f1f1;
+	/* Light text */
+	cursor: text;
+}
+
+.copy-link-btn {
+	background-color: #ff0000;
+	/* YouTube Red */
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 5px;
+	font-size: 1em;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.copy-link-btn:hover {
+	background-color: #cc0000;
+	/* Darker red */
+}
+
+/* Toast Notification */
+.toast {
+	visibility: hidden;
+	/* Hidden by default */
+	min-width: 250px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 8px;
+	padding: 16px;
+	position: fixed;
+	z-index: 101;
+	/* Above modals */
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 30px;
+	font-size: 1em;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+	/* Stronger shadow */
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.toast i {
+	font-size: 1.2em;
+}
+
+.toast.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Keyframe Animations */
+@-webkit-keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+
+	to {
+		bottom: 30px;
+		opacity: 1;
+	}
+}
+
+@keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+
+	to {
+		bottom: 30px;
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeout {
+	from {
+		bottom: 30px;
+		opacity: 1;
+	}
+
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		bottom: 30px;
+		opacity: 1;
+	}
+
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* --- Shared View Specific Styles --- */
+/* These rules apply when the 'shared-view' class is added to the body */
+
+body.shared-view .sidebar {
+	display: none;
+	/* Hide the entire sidebar */
+}
+
+body.shared-view .main-content {
+	margin-left: 0;
+	/* Remove any left margin that the sidebar previously occupied */
+	width: 100%;
+	/* Make the main content take full width */
+	max-width: none;
+	/* Remove any max-width constraints if present */
+	padding: 30px 50px;
+	/* Adjust padding for a centered, wider look */
+}
+
+/* Explicitly hide various interactive elements */
+body.shared-view .add-board-btn {
+	display: none;
+}
+
+body.shared-view .thumbnail-form {
+	display: none;
+	/* Hide the form to add new thumbnails */
+}
+
+body.shared-view .share-board-btn {
+	display: none;
+	/* Hide the share board button itself when in shared view */
+}
+
+/* Hide edit/delete buttons on board list items (though sidebar is hidden, this is for robustness) */
+body.shared-view .board-item .edit-board-btn {
+	display: none;
+}
+
+/* Hide the delete button on individual thumbnails */
+body.shared-view .thumbnail-item .delete-thumbnail-btn {
+	display: none;
+}
+
+/* For modals (though JS prevents opening them, this is a fallback) */
+body.shared-view #add-board-modal,
+body.shared-view #share-board-modal,
+body.shared-view #edit-board-modal {
+	display: none !important;
+	/* Ensure modals cannot be triggered/seen */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+	.sidebar {
+		width: 100%;
+		height: auto;
+		position: relative;
+		box-shadow: none;
+		border-bottom: 1px solid #3a3a3a;
+		/* Dark border */
+		padding-bottom: 0;
+	}
+
+	.sidebar-header {
+		margin-bottom: 15px;
+		padding-bottom: 10px;
+	}
+
+	.main-content {
+		padding: 20px;
+		margin-left: 0;
+	}
+
+	.thumbnail-form {
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.thumbnail-input,
+	.add-btn {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.board-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 15px;
+	}
+
+	.board-header h1 {
+		font-size: 1.8em;
+	}
+
+	.share-board-btn {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.thumbnail-grid {
+		grid-template-columns: 1fr;
+		/* Single column on small screens */
+	}
+
+	.modal-content {
+		width: 95%;
+		padding: 20px;
+	}
+
+	.modal-footer {
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.create-board-btn,
+	.update-board-btn,
+	.delete-board-btn,
+	.copy-link-btn {
+		width: 100%;
+		justify-content: center;
+	}
+
+	/* Shared view adjustments for small screens */
+	body.shared-view .main-content {
+		padding: 20px;
+		/* Maintain padding on small screens */
+	}
+}

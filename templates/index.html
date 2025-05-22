@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Thumbnail Board</title>
+	<link rel="stylesheet" href="/static/css/styles.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+	<div class="app-container">
+		<div class="sidebar">
+			<div class="sidebar-header">
+				<h2>Thumbnail Boards</h2>
+			</div>
+			<div class="sidebar-content">
+				<ul id="board-list" class="board-list">
+				</ul>
+				<button id="add-board-btn" class="add-board-btn">
+					<i class="fas fa-plus"></i> Add New Board
+				</button>
+			</div>
+		</div>
+
+		<div class="main-content">
+			<div class="board-header">
+				<h1 id="active-board-title">My First Board</h1>
+				<button id="share-board-btn" class="share-board-btn">
+					<i class="fas fa-share-alt"></i> Share Board
+				</button>
+			</div>
+
+			<form id="thumbnail-form" class="thumbnail-form">
+				<input type="text" id="thumbnail-url" placeholder="Paste YouTube video URL here"
+					class="thumbnail-input">
+				<button type="submit" class="add-btn">Add Thumbnail</button>
+			</form>
+
+			<div id="thumbnail-grid" class="thumbnail-grid">
+				<div class="empty-state">
+					<p>No thumbnails added yet</p>
+					<p class="small-text">Add a thumbnail URL to get started</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="add-board-modal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Create New Board</h2>
+				<span class="close-modal">&times;</span>
+			</div>
+			<div class="modal-body">
+				<label for="board-name">Board Name</label>
+				<input type="text" id="board-name" placeholder="My YouTube Thumbnails">
+			</div>
+			<div class="modal-footer">
+				<button id="create-board-btn" class="create-board-btn">Create Board</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="share-board-modal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Share Board</h2>
+				<span class="close-modal">&times;</span>
+			</div>
+			<div class="modal-body">
+				<p>Share this unique link to give others access to this board.</p>
+				<div class="share-link-container">
+					<input type="text" id="share-link" readonly>
+					<button id="copy-link-btn" class="copy-link-btn">
+						<i class="fas fa-copy"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="edit-board-modal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Edit Board Name</h2>
+				<span class="close-modal">&times;</span>
+			</div>
+			<div class="modal-body">
+				<label for="edit-board-name">Board Name</label>
+				<input type="text" id="edit-board-name" placeholder="My YouTube Thumbnails">
+				<input type="hidden" id="edit-board-id">
+			</div>
+			<div class="modal-footer">
+				<button id="update-board-btn" class="create-board-btn">Update Board</button>
+				<button id="delete-board-btn" class="delete-board-btn">Delete Board</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="toast" class="toast">
+		<div class="toast-content">
+			<i class="fas fa-check-circle"></i>
+			<div class="toast-message">Link copied to clipboard!</div>
+		</div>
+	</div>
+
+	<script src="/static/js/app.js"></script>
+</body>
+
+</html>
