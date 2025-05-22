@@ -37,6 +37,7 @@ This streamlines the inspiration gathering process, making collaboration between
     * **Google Fonts (Roboto):** For consistent typography.
 
 ## 📦 Project Structure
+```
 thumbnail-board/
 ├── app.py                  # Flask application (backend)
 ├── thumbnails.db           # SQLite database (generated at runtime, excluded from Git)
@@ -47,7 +48,7 @@ thumbnail-board/
 │   └── styles.css      # Frontend CSS styles
 └── js/
 └── app.js          # Frontend JavaScript
-
+```
 ## 🛠️ Setup and Installation
 
 Follow these steps to get the Thumbnail Board running on your local machine.
